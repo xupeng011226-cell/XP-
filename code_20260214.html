@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七夕终极密集浪漫盛宴</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        /* 多种文字样式：不同大小、粗细、发光效果 */
+        .text {
+            position: absolute;
+            color: #ff69b4;
+            white-space: nowrap;
+            opacity: 0;
+            animation: floatText 6s linear forwards;
+            text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff69b4;
+        }
+        .text.style1 { font-size: 32px; font-weight: bold; }
+        .text.style2 { font-size: 26px; font-weight: 500; }
+        .text.style3 { font-size: 22px; font-weight: normal; }
+        .text.style4 { font-size: 29px; font-weight: 600; }
+
+        .heart {
+            position: absolute;
+            color: #ff1493;
+            opacity: 0;
+            animation: floatHeart 5s linear forwards;
+            text-shadow: 0 0 12px #ff1493, 0 0 25px #ff1493;
+        }
+        .heart.style1 { font-size: 36px; }
+        .heart.style2 { font-size: 28px; }
+        .heart.style3 { font-size: 32px; }
+
+        .sparkle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #fff 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatSparkle 3s linear forwards;
+        }
+
+        @keyframes floatText {
+            0% { opacity: 0; transform: translateY(100vh) scale(0.6); }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-20vh) scale(1.3); }
+        }
+        @keyframes floatHeart {
+            0% { opacity: 0; transform: translateY(100vh) scale(0.4); }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-20vh) scale(1.1); }
+        }
+        @keyframes floatSparkle {
+            0% { opacity: 0; transform: translateY(100vh) scale(0.2); }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-20vh) scale(0.6); }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 超丰富浪漫文案（80+条，覆盖不同告白场景）
+        const texts = [
+            "七夕快乐", "我爱你", "满心是你", "余生是你", "只对你心动", "永远热恋",
+            "岁岁年年", "朝朝暮暮", "遇见即是上上签", "你是我的偏爱", "没有期限",
+            "温柔皆给你", "满心欢喜", "世界再大，有你就好", "I love you", "爱你永不变",
+            "此生唯你", "与你共度朝夕", "往后余生都是你", "深情不负", "爱意满满",
+            "浪漫不渝", "对你心动不已", "偏爱只给你", "余生请多指教", "甜蜜如你",
+            "爱你到永远", "心动瞬间", "浪漫满屋", "幸福有你", "情深意浓", "钟情于你",
+            "爱意绵绵", "甜度超标", "浪漫至死不渝", "你是我的宇宙", "心动永恒",
+            "爱你无上限", "专属浪漫", "双向奔赴", "彼此救赎", "满眼都是你",
+            "赴一场七夕之约", "以爱为名", "岁岁有你", "朝暮相伴", "爱意东升西落",
+            "浪漫至死方休", "你是藏在云层里的浪漫", "七夕限定浪漫", "为你心动千千万万次",
+            "山河辽阔，不及你", "人间烟火，唯你值得", "爱你不止七夕", "余生漫漫，皆为你",
+            "心动是你，白首也是你", "把温柔都给你", "你是我的例外偏爱", "七夕告白，只为你",
+            "星河滚烫，你是人间理想", "风很温柔，花很浪漫，你很特别", "与你有关，皆是浪漫",
+            "始于心动，终于白首", "三餐四季，与你共度", "满心满眼，皆是爱意",
+            "七夕快乐，我的心上人", "往后余生，风雪是你", "平淡是你，荣华是你",
+            "目光所及，皆是你", "满心欢喜，只因有你", "爱如潮水，涌向你",
+            "浪漫七夕，唯爱永恒", "你是我藏不住的喜欢", "明目张胆的偏爱",
+            "七夕佳节，爱意满满", "为你奔赴，不远万里", "心之所向，皆是你",
+            "喜欢你，不止今天", "余生有你，未来可期", "七夕之约，一生相守",
+            "爱你，是藏在心底的秘密", "你是我的温柔月光", "浪漫七夕，有你足矣"
+        ];
+
+        const container = document.body;
+        const textStyles = ["style1", "style2", "style3", "style4"];
+        const heartStyles = ["style1", "style2", "style3"];
+        const hearts = ["❤️", "💖", "💗", "💘", "💝", "💓", "💞", "💟"];
+
+        // 密集生成文字（极致频率）
+        function createText() {
+            const div = document.createElement("div");
+            div.className = `text ${textStyles[Math.floor(Math.random() * textStyles.length)]}`;
+            div.innerText = texts[Math.floor(Math.random() * texts.length)];
+            div.style.left = Math.random() * 95 + "vw"; // 避免超出屏幕
+            div.style.animationDuration = (3 + Math.random() * 5) + "s";
+            container.appendChild(div);
+            setTimeout(() => {
+                container.removeChild(div);
+            }, 6000);
+        }
+
+        // 密集生成爱心
+        function createHeart() {
+            const div = document.createElement("div");
+            div.className = `heart ${heartStyles[Math.floor(Math.random() * heartStyles.length)]}`;
+            div.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+            div.style.left = Math.random() * 95 + "vw";
+            div.style.animationDuration = (2 + Math.random() * 4) + "s";
+            container.appendChild(div);
+            setTimeout(() => {
+                container.removeChild(div);
+            }, 5000);
+        }
+
+        // 密集生成星光
+        function createSparkle() {
+            const div = document.createElement("div");
+            div.className = "sparkle";
+            div.style.left = Math.random() * 100 + "vw";
+            div.style.animationDuration = (1.5 + Math.random() * 3) + "s";
+            container.appendChild(div);
+            setTimeout(() => {
+                container.removeChild(div);
+            }, 3000);
+        }
+
+        // 极致密集频率：每秒生成多个元素
+        setInterval(createText, 100);
+        setInterval(createHeart, 150);
+        setInterval(createSparkle, 200);
+    </script>
+</body>
+</html>
